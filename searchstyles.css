@@ -1,0 +1,30 @@
+.options ul {
+  list-style: none;
+  display: grid;
+  grid-gap: 1rem;
+  padding: 0;
+  margin-top: 2rem;
+  list-style: none;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.options li {
+  display: block;
+  text-decoration: none;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--dark);
+  text-transform: uppercase;
+  border: 2px dashed var(--dark);
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+
+.options li:hover {
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--dark);
+  border: 2px dashed var(--dark);
+  border-radius: 5px;
+  background-color: var(--secondary);
+}
