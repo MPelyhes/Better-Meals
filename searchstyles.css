@@ -28,3 +28,19 @@
   border-radius: 5px;
   background-color: var(--secondary);
 }
+
+#recipe-display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 3rem;
+}
+
+.recipe-card {
+  width: 17rem;
+  height: 20rem;
+  background-color: var(--dark);
+  
+  margin-bottom: 1rem;
+}
