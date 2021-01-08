@@ -28,7 +28,7 @@ h2.innerText = "This Meal is Bananas";
 const paragraph = document.createElement('p');
 paragraph.innerText ="Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptates ut unde ratione quia natus.";
 const saveIcon = document.createElement('i');
-saveIcon.classList.add('fas fa-clipboard-list fa-2x');
+saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');
 
 mainSection.appendChild(recipeCard);
 recipeCard.appendChild(recipeImg);
