@@ -18,6 +18,7 @@ const mainSection = document.querySelector('#recipe-display');
 // For loop to create the recipe cards
 
 for(let i = 1; i <= 8; i++){
+  // Recipe card div with all its elements
 const recipeCard = document.createElement('div');
 recipeCard.classList.add('recipe-card');
 const recipeImg = document.createElement('img');
@@ -30,6 +31,7 @@ paragraph.innerText ="Lorem ipsum dolor sit amet consectetur adipisicing elit. E
 const saveIcon = document.createElement('i');
 saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');
 
+//Adding recipe card to the main section and all other elements to recipe card
 mainSection.appendChild(recipeCard);
 recipeCard.appendChild(recipeImg);
 recipeCard.appendChild(h2);
