@@ -100,7 +100,7 @@ h1 {
 }
 
 .body-nav a:hover{
-  background: var(--dark);
+  background: var(--darks);
   color: var(--light);
 } 
 

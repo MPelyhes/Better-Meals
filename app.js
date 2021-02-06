@@ -27,8 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/test', (req, res) => {
-  res.render('meals/test')
+app.get('/index', (req, res) => {
+  res.render('meals/index')
 })
 
 app.listen(3000, () => {
