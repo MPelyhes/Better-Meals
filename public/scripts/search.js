@@ -20,9 +20,6 @@ breakfastBtn.addEventListener('click', ()=> {
   
   //Adding recipe card to the main section and all other elements to recipe card
   mainSection.appendChild(recipeCard);
-  recipeCard.appendChild(recipeImg);
-  recipeCard.appendChild(h2);
-  recipeCard.appendChild(paragraph);
-  recipeCard.appendChild(saveIcon);
+  recipeCard.append(recipeImg, h2, paragraph, saveIcon);
   }
 })
