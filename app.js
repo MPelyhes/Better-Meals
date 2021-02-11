@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 
+const jsonTest = require('./recipe/breakfast.json')
+
 mongoose.connect('mongodb://localhost:27017/better-meals', {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -28,6 +30,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/index', (req, res) => {
+  console.log(jsonTest)
   res.render('meals/index')
 })
 

@@ -1,3 +1,4 @@
+
 // Section holding the recipe card divs
 const mainSection = document.querySelector('#recipe-display');
 const breakfastBtn = document.querySelector('#breakfast');
@@ -22,4 +23,5 @@ breakfastBtn.addEventListener('click', ()=> {
   mainSection.appendChild(recipeCard);
   recipeCard.append(recipeImg, h2, paragraph, saveIcon);
   }
+  console.log(jsonTest);
 })
