@@ -35,8 +35,8 @@ app.get('/index', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  const jsonObj = jsonTest.hits;
-  res.render('meals/search', { jsonObj })
+  // const jsonObj = jsonTest.hits;
+  res.render('meals/search')
 })
 
 app.get('/myMeals', (req, res) => {

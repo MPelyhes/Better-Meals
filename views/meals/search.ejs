@@ -1,34 +1,23 @@
 <% layout('layouts/boilerplate')%>
 
 <main class="wrapper">
+
   <div class="intro">
     <h1>Let's Begin!</h1>
     <h2>What are you searching for today?</h2>
-</div>
-<div class= "options">
-  <form action="">
-    <input id="search" type="text" placeholder="What'll it be?">
-  </form>
-  <ul>
-    <li id="searchBtn">Search</li>
-    <!-- <li>Lunch</li>
-    <li>Dinner</li>
-    <li>Other</li> -->
-  </ul>
-</div>
-  <section id="recipe-display" class="full-bleed">
-    <% for (obj of jsonObj) { %> 
-   <div class="recipe-card">
-      <img class="recipe-img" src="<%=obj.recipe.image%>"">
-      <h2><a href="<%=obj.recipe.url%>"><%=obj.recipe.label%></a></h2>
-      <ul>
-        <% for (ingredient of obj.recipe.ingredientLines) {%>
-        <li><%= ingredient %></li>  
-      <% } %>
-      </ul> 
-      <i class="fas fa-clipboard-list fa-2x"></i>
   </div>
-    <% } %> 
-  </section>
+
+  <div class= "options">
+    <form action="">
+      <input id="search" type="text" placeholder="What'll it be?">
+    </form>
+    <ul>
+      <li id="searchBtn">Search</li>
+    </ul>
+  </div>
+
+  <section id="recipe-display" class="full-bleed"></section>
+
 </main>
+
 <script type="text/javascript" src="/scripts/search.js"></script>
