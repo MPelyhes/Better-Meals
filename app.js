@@ -30,12 +30,13 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/index', (req, res) => {
-  console.log(jsonTest)
+  console.log(jsonTest.hits[0].recipe.image)
   res.render('meals/index')
 })
 
 app.get('/search', (req, res) => {
-  res.render('meals/search')
+  const jsonObj = jsonTest.hits;
+  res.render('meals/search', { jsonObj })
 })
 
 app.get('/myMeals', (req, res) => {
