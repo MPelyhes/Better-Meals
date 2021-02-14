@@ -47,6 +47,16 @@ app.get('/mealPlan', (req, res) => {
   res.render('meals/mealPlan')
 })
 
+
+app.get('/users/register', (req, res) => {
+  res.render('users/register')
+})
+
+app.get('/users/login', (req, res) => {
+  res.render('users/login')
+})
+
+
 app.listen(3000, () => {
   console.log('Serving on port 3000')
 })
