@@ -43,6 +43,7 @@ app.get('/myMeals', (req, res) => {
   res.render('meals/myMeals')
 })
 
+
 app.get('/mealPlan', (req, res) => {
   res.render('meals/mealPlan')
 })

@@ -22,7 +22,12 @@ const search = document.querySelector('#search');
 const searchBtn = document.querySelector('#searchBtn');
 const recipes = new Recipe
 
+mainSection.addEventListener('click', (e)=> {
 
+  if(e.target.className === 'fas fa-clipboard-list fa-2x' ){
+    alert('You got me!')
+  }
+})
 
 searchBtn.addEventListener('click', ()=> {
   let searchQ = search.value;
@@ -32,6 +37,8 @@ searchBtn.addEventListener('click', ()=> {
      createUI(results.hits);
    })
   }
+
+
 })
 
 const createUI = (obj)=> {
@@ -40,13 +47,20 @@ const createUI = (obj)=> {
     // Recipe card div with all its elements
   const recipeCard = document.createElement('div');
   recipeCard.classList.add('recipe-card');
+
   const recipeImg = document.createElement('img');
   recipeImg.src = `${obj[i].recipe.image}`;
   recipeImg.classList.add('recipe-img')
+
   const h2 = document.createElement('h2');
   h2.innerText = `${obj[i].recipe.label}`;
+
   const paragraph = document.createElement('p');
   paragraph.innerText =`${obj[i].recipe.ingredientLines[0]}`;
+
+  const saveForm = document.createElement('form');
+  saveForm.action = "/"  
+
   const saveIcon = document.createElement('i');
   saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');
 
