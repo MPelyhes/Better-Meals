@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
+const SavedMeal = require('./models/savedMeal');
 
 const jsonTest = require('./recipe/breakfast.json')
 
@@ -34,17 +35,21 @@ app.get('/index', (req, res) => {
   res.render('meals/index')
 })
 
-app.get('/search', (req, res) => {
-  // const jsonObj = jsonTest.hits;
+app.get('/meals/search', (req, res) => {
   res.render('meals/search')
 })
 
-app.get('/myMeals', (req, res) => {
+app.post('/meals/search', async (req, res) => {
+  const savedMeal = new SavedMeal(req.body.savedMeal);
+  await savedMeal.save();
+  console.log(savedMeal);
+})
+
+app.get('/meals/myMeals', (req, res) => {
   res.render('meals/myMeals')
 })
 
-
-app.get('/mealPlan', (req, res) => {
+app.get('/meals/mealPlan', (req, res) => {
   res.render('meals/mealPlan')
 })
 

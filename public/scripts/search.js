@@ -20,7 +20,7 @@ class Recipe {
 
 const mainSection = document.querySelector('#recipe-display');
 const search = document.querySelector('#search');
-const searchBtn = document.querySelector('#searchBtn');
+const searchBtn = document.querySelector('#search-button');
 const recipes = new Recipe
 
 mainSection.addEventListener('click', (e)=> {
@@ -63,48 +63,49 @@ const createUI = (obj)=> {
   saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');
   
   const saveForm = document.createElement('form');
-  saveForm.action = "/"  // figure this out later!
+  saveForm.action = "/meals/search"
+  saveForm.method ="POST"
 
   //Create hidden form for submitting recipes to mongodb!
   const labelForm = document.createElement('input');
   labelForm.type = "hidden";
   labelForm.value = `${obj[i].recipe.label}`;
-  labelForm.name = "label";
+  labelForm.name = "savedMeal[label]";
 
   const imageForm = document.createElement('input');
   imageForm.type = "hidden";
   imageForm.value = `${obj[i].recipe.image}`;
-  imageForm.name = "image";
+  imageForm.name = "savedMeal[image]";
 
   const sourceForm = document.createElement('input');
   sourceForm.type = "hidden";
   sourceForm.value = `${obj[i].recipe.source}`;
-  sourceForm.name = "source";
+  sourceForm.name = "savedMeal[source]";
 
   const sourceUrlForm = document.createElement('input');
   sourceUrlForm.type = "hidden";
   sourceUrlForm.value = `${obj[i].recipe.url}`;
-  sourceUrlForm.name = "sourceURL";  
+  sourceUrlForm.name = "savedMeal[sourceURL]";  
 
   const servingsForm = document.createElement('input');
   servingsForm.type = "hidden";
   servingsForm.value = `${obj[i].recipe.yield}`;
-  servingsForm.name = "servings";
+  servingsForm.name = "savedMeal[servings]";
 
   const ingredientsForm = document.createElement('input');
   ingredientsForm.type = "hidden";
   ingredientsForm.value = `${obj[i].recipe.ingredientLines}`
-  ingredientsForm.name = "ingredients";
+  ingredientsForm.name = "savedMeal[ingredients]";
 
   const caloriesForm = document.createElement('input');
   caloriesForm.type = "hidden";
   caloriesForm.value = `${obj[i].recipe.calories}`;  
-  caloriesForm.name = "calories"
+  caloriesForm.name = "savedMeal[calories]"
 
-  const nutritionForm = document.createElement('input');
-  nutritionForm.type = "hidden";
-  nutritionForm.value = `${obj[i].recipe.totalNutrients}`;  
-  nutritionForm.name = "nutrition"  
+  // const nutritionForm = document.createElement('input');
+  // nutritionForm.type = "hidden";
+  // nutritionForm.value = `${obj[i].recipe.totalNutrients}`;  
+  // nutritionForm.name = "savedMeal[nutrition]"  
   
   const saveButton = document.createElement('button');
   saveButton.innerText = 'Save Meal';
@@ -112,6 +113,6 @@ const createUI = (obj)=> {
   //Adding recipe card to the main section and all other elements to recipe card
   mainSection.appendChild(recipeCard);
   recipeCard.append(recipeImg, h2, paragraph, saveIcon, saveForm);
-  saveForm.append(labelForm, imageForm, sourceForm, sourceUrlForm, servingsForm, ingredientsForm, caloriesForm, nutritionForm, saveButton);
+  saveForm.append(labelForm, imageForm, sourceForm, sourceUrlForm, servingsForm, ingredientsForm, caloriesForm, saveButton);
   }
 }
