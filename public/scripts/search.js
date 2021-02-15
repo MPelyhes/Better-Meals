@@ -3,7 +3,7 @@ class Recipe {
   constructor(){
     this.app_id = '33ef320b';
     this.app_key = '16dec4e1cfa93d80d4ed52aa172ddb5e';
-    this.recipe_count = 20;
+    this.recipe_count = 10;
   }
 
   async getRecipe(searchQ) {
@@ -15,6 +15,7 @@ class Recipe {
     return recipeResponse;
   }
 
+
 }
 
 const mainSection = document.querySelector('#recipe-display');
@@ -25,7 +26,7 @@ const recipes = new Recipe
 mainSection.addEventListener('click', (e)=> {
 
   if(e.target.className === 'fas fa-clipboard-list fa-2x' ){
-    alert('You got me!')
+    const saveIcon = e.target;
   }
 })
 
@@ -56,14 +57,54 @@ const createUI = (obj)=> {
   h2.innerText = `${obj[i].recipe.label}`;
 
   const paragraph = document.createElement('p');
-  paragraph.innerText =`${obj[i].recipe.ingredientLines[0]}`;
-
-  const saveForm = document.createElement('form');
-  saveForm.action = "/"  
+  paragraph.innerText =`${obj[i].recipe.ingredientLines}`;
 
   const saveIcon = document.createElement('i');
   saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');
+  
+  const saveForm = document.createElement('form');
+  saveForm.action = "/"  // figure this out later!
 
+  //Create hidden form for submitting recipes to mongodb!
+  const labelForm = document.createElement('input');
+  labelForm.type = "hidden";
+  labelForm.value = `${obj[i].recipe.label}`;
+  labelForm.name = "label";
+
+  const imageForm = document.createElement('input');
+  imageForm.type = "hidden";
+  imageForm.value = `${obj[i].recipe.image}`;
+  imageForm.name = "image";
+
+  const sourceForm = document.createElement('input');
+  sourceForm.type = "hidden";
+  sourceForm.value = `${obj[i].recipe.source}`;
+  sourceForm.name = "source";
+
+  const sourceUrlForm = document.createElement('input');
+  sourceUrlForm.type = "hidden";
+  sourceUrlForm.value = `${obj[i].recipe.url}`;
+  sourceUrlForm.name = "sourceURL";  
+
+  const servingsForm = document.createElement('input');
+  servingsForm.type = "hidden";
+  servingsForm.value = `${obj[i].recipe.yield}`;
+  servingsForm.name = "servings";
+
+  const ingredientsForm = document.createElement('input');
+  ingredientsForm.type = "hidden";
+  ingredientsForm.value = `${obj[i].recipe.ingredientLines}`
+  ingredientsForm.name = "ingredients";
+
+  const caloriesForm = document.createElement('input');
+  caloriesForm.type = "hidden";
+  caloriesForm.value = `${obj[i].recipe.calories}`;  
+  caloriesForm.name = "calories"
+
+  const nutritionForm = document.createElement('input');
+  nutritionForm.type = "hidden";
+  nutritionForm.value = `${obj[i].recipe.totalNutrients}`;  
+  nutritionForm.name = "nutrition"  
   //Adding recipe card to the main section and all other elements to recipe card
   mainSection.appendChild(recipeCard);
   recipeCard.append(recipeImg, h2, paragraph, saveIcon);
