@@ -9,10 +9,10 @@ const SavedMealSchema = new Schema({
   servings: Number,
   ingredients: [String],
   calories: Number,
-  nutrition: [{
-    nutrient: String,
-    quantity: Number
-  }]
+  // nutrition: [{   //Temporarily removed until I learn how to send objects with a POST request
+  //   nutrient: String,
+  //   quantity: Number
+  // }]
 });
 
 module.exports = mongoose.model('SavedMeal', SavedMealSchema);
