@@ -105,8 +105,13 @@ const createUI = (obj)=> {
   nutritionForm.type = "hidden";
   nutritionForm.value = `${obj[i].recipe.totalNutrients}`;  
   nutritionForm.name = "nutrition"  
+  
+  const saveButton = document.createElement('button');
+  saveButton.innerText = 'Save Meal';
+
   //Adding recipe card to the main section and all other elements to recipe card
   mainSection.appendChild(recipeCard);
-  recipeCard.append(recipeImg, h2, paragraph, saveIcon);
+  recipeCard.append(recipeImg, h2, paragraph, saveIcon, saveForm);
+  saveForm.append(labelForm, imageForm, sourceForm, sourceUrlForm, servingsForm, ingredientsForm, caloriesForm, nutritionForm, saveButton);
   }
 }
