@@ -2,10 +2,12 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
+const session = require('express-session');
 const methodOverride = require('method-override');
 const SavedMeal = require('./models/savedMeal');
-
-const jsonTest = require('./recipe/breakfast.json')
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/user');
 
 mongoose.connect('mongodb://localhost:27017/better-meals', {
     useNewUrlParser: true,
@@ -30,8 +32,28 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
+const sessionConfig = {
+  secret: 'dragonsarereal',
+  resave: false,
+  saveUninitialized: true,
+  // Set up mongo store when ready to deploy!
+  cookie: {
+    httpOnly: true,
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // expires in one week
+    maxAge: 1000 * 60 * 60 * 24 * 7 // one week
+  }
+
+}
+app.use(session(sessionConfig))
+
+app.use(passport.initialize());
+app.use(passport.session()); //Set up sessions! Sessions must come before this line!!!!
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.get('/index', (req, res) => {
-  console.log(jsonTest.hits[0].recipe.image)
   res.render('meals/index')
 })
 
@@ -64,6 +86,9 @@ app.get('/users/login', (req, res) => {
   res.render('users/login')
 })
 
+app.use((err, req, res, next) => {
+  res.send('Oh boy, something went wrong');
+})
 
 app.listen(3000, () => {
   console.log('Serving on port 3000')
