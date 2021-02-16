@@ -45,8 +45,10 @@ app.post('/meals/search', async (req, res) => {
   console.log(savedMeal);
 })
 
-app.get('/meals/myMeals', (req, res) => {
-  res.render('meals/myMeals')
+app.get('/meals/myMeals', async (req, res) => {
+  const savedMeal = await SavedMeal.find({});
+
+  res.render('meals/myMeals', { savedMeal })
 })
 
 app.get('/meals/mealPlan', (req, res) => {
