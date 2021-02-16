@@ -10,6 +10,7 @@ const SavedMeal = require('./models/savedMeal');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const flash = require('connect-flash');
 
 mongoose.connect('mongodb://localhost:27017/better-meals', {
     useNewUrlParser: true,
@@ -47,6 +48,12 @@ const sessionConfig = {
 
 }
 app.use(session(sessionConfig))
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash('success');
+  next();
+})
 
 app.use(passport.initialize());
 app.use(passport.session()); //Set up sessions! Sessions must come before this line!!!!
@@ -60,6 +67,7 @@ app.get('/index', (req, res) => {
 })
 
 app.get('/meals/search', (req, res) => {
+  
   res.render('meals/search')
 })
 
@@ -67,6 +75,7 @@ app.post('/meals/search', catchAsync(async (req, res, next) => {
   if(!req.body.savedMeal) throw new ExpressError('Invalid Meal Data', 400);
   const savedMeal = new SavedMeal(req.body.savedMeal);
   await savedMeal.save();
+  // req.flash('success', 'Meal Saved!')
   console.log(savedMeal);
 }));
 
