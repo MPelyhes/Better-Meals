@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./utils/catchAsync');
+const ExpressError = require('./utils/ExpressError');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const SavedMeal = require('./models/savedMeal');
@@ -63,6 +64,7 @@ app.get('/meals/search', (req, res) => {
 })
 
 app.post('/meals/search', catchAsync(async (req, res, next) => {
+  if(!req.body.savedMeal) throw new ExpressError('Invalid Meal Data', 400);
   const savedMeal = new SavedMeal(req.body.savedMeal);
   await savedMeal.save();
   console.log(savedMeal);
@@ -87,8 +89,16 @@ app.get('/users/login', (req, res) => {
   res.render('users/login')
 })
 
+app.all('*', (req, res, next) => {
+  next(new ExpressError('Page Not Found', 404))
+})
+
 app.use((err, req, res, next) => {
-  res.send('Oh boy, something went wrong');
+  const { statusCode = 500, message = 'Something went wrong' } = err;
+
+  if(!err.message) err.message = 'Oh no! Something went wrong!'
+  res.status(statusCode).send(message);
+  // .render('error', { err }) // Add this back in when flash is set up
 })
 
 app.listen(3000, () => {
