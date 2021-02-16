@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
+const catchAsync = require('./utils/catchAsync');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const SavedMeal = require('./models/savedMeal');
@@ -61,17 +62,17 @@ app.get('/meals/search', (req, res) => {
   res.render('meals/search')
 })
 
-app.post('/meals/search', async (req, res) => {
+app.post('/meals/search', catchAsync(async (req, res, next) => {
   const savedMeal = new SavedMeal(req.body.savedMeal);
   await savedMeal.save();
   console.log(savedMeal);
-})
+}));
 
-app.get('/meals/myMeals', async (req, res) => {
+app.get('/meals/myMeals', catchAsync(async (req, res, next) => {
   const savedMeal = await SavedMeal.find({});
 
   res.render('meals/myMeals', { savedMeal })
-})
+}));
 
 app.get('/meals/mealPlan', (req, res) => {
   res.render('meals/mealPlan')
