@@ -52,7 +52,9 @@ app.use(session(sessionConfig))
 app.use(flash());
 
 app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
   next();
 })
 
@@ -73,10 +75,13 @@ app.get('/meals/search', (req, res) => {
 })
 
 app.post('/meals/search', catchAsync(async (req, res, next) => {
+  if(!req.isAuthenticated()){
+    return res.redirect('/login');
+  }
   if(!req.body.savedMeal) throw new ExpressError('Invalid Meal Data', 400);
   const savedMeal = new SavedMeal(req.body.savedMeal);
   await savedMeal.save();
-  // req.flash('success', 'Meal Saved!')
+  req.flash('success', 'Meal Saved!')
   console.log(savedMeal);
 }));
 
@@ -100,15 +105,13 @@ app.post('/register', catchAsync( async (req, res, next) => {
     const { email, username, password } = req.body;
     const user = new User({ email, username });
     const registeredUser = await User.register(user, password);
-    console.log(registeredUser);
-    res.redirect('/index')
     req.login(registeredUser, err => {
       if(err) return next(err);
-      // req.flash('success', 'Welcome to YelpCamp!');
+      req.flash('success', 'Welcome to BetterMeals!');
       res.redirect('/index');
     })
   } catch(e){
-      // req.flash('error', e.message)
+      req.flash('error', e.message)
       res.redirect('register')
   }
 }))
@@ -131,8 +134,7 @@ app.use((err, req, res, next) => {
   const { statusCode = 500, message = 'Something went wrong' } = err;
 
   if(!err.message) err.message = 'Oh no! Something went wrong!'
-  res.status(statusCode).send(message);
-  // .render('error', { err }) // Add this back in when flash is set up
+  res.status(statusCode).render('error', { err }) // Add this back in when flash is set up
 })
 
 app.listen(3000, () => {
