@@ -11,6 +11,7 @@ const SavedMeal = require('./models/savedMeal');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const { isLoggedIn } = require('./middleware');
 
 
 mongoose.connect('mongodb://localhost:27017/better-meals', {
@@ -69,29 +70,25 @@ app.get('/index', (req, res) => {
   res.render('meals/index')
 })
 
-app.get('/meals/search', (req, res) => {
+app.get('/search', (req, res) => {
   
   res.render('meals/search')
 })
 
-app.post('/meals/search', catchAsync(async (req, res, next) => {
-  if(!req.isAuthenticated()){
-    return res.redirect('/login');
-  }
+app.post('/search', isLoggedIn, catchAsync(async (req, res, next) => {
   if(!req.body.savedMeal) throw new ExpressError('Invalid Meal Data', 400);
   const savedMeal = new SavedMeal(req.body.savedMeal);
   await savedMeal.save();
   req.flash('success', 'Meal Saved!')
-  console.log(savedMeal);
 }));
 
-app.get('/meals/myMeals', catchAsync(async (req, res, next) => {
+app.get('/myMeals', catchAsync(async (req, res, next) => {
   const savedMeal = await SavedMeal.find({});
 
   res.render('meals/myMeals', { savedMeal })
 }));
 
-app.get('/meals/mealPlan', (req, res) => {
+app.get('/mealPlan', (req, res) => {
   res.render('meals/mealPlan')
 })
 

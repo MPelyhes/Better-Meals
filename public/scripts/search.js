@@ -63,7 +63,7 @@ const createUI = (obj)=> {
   saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');
   
   const saveForm = document.createElement('form');
-  saveForm.action = "/meals/search"
+  saveForm.action = "/search"
   saveForm.method ="POST"
 
   //Create hidden form for submitting recipes to mongodb!
