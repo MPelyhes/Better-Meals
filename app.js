@@ -5,12 +5,13 @@ const ejsMate = require('ejs-mate');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const session = require('express-session');
+const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const SavedMeal = require('./models/savedMeal');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-const flash = require('connect-flash');
+
 
 mongoose.connect('mongodb://localhost:27017/better-meals', {
     useNewUrlParser: true,
@@ -89,14 +90,38 @@ app.get('/meals/mealPlan', (req, res) => {
   res.render('meals/mealPlan')
 })
 
-
-app.get('/users/register', (req, res) => {
+// User Routes //////////////////////////////////////////////
+app.get('/register', (req, res) => {
   res.render('users/register')
 })
 
-app.get('/users/login', (req, res) => {
+app.post('/register', catchAsync( async (req, res, next) => {
+  try {
+    const { email, username, password } = req.body;
+    const user = new User({ email, username });
+    const registeredUser = await User.register(user, password);
+    console.log(registeredUser);
+    res.redirect('/index')
+    req.login(registeredUser, err => {
+      if(err) return next(err);
+      // req.flash('success', 'Welcome to YelpCamp!');
+      res.redirect('/index');
+    })
+  } catch(e){
+      // req.flash('error', e.message)
+      res.redirect('register')
+  }
+}))
+
+app.get('/login', (req, res) => {
   res.render('users/login')
 })
+
+app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login'}), (req, res) => {
+  res.redirect('/index');
+})
+
+//////////////////////////////////////////////////////////////
 
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404))
