@@ -121,6 +121,12 @@ app.post('/login', passport.authenticate('local', { failureFlash: true, failureR
   res.redirect('/index');
 })
 
+app.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success', 'Goodbye!')
+  res.redirect('/index');
+})
+
 //////////////////////////////////////////////////////////////
 
 app.all('*', (req, res, next) => {
