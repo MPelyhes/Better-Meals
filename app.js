@@ -70,15 +70,22 @@ app.get('/index', (req, res) => {
   res.render('meals/index')
 })
 
-app.get('/search', (req, res) => {
-  
-  res.render('meals/search')
-})
+app.get('/search', catchAsync(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if(!user){
+    res.render('meals/search')
+  }
+  res.render('meals/search', { user })
+}))
 
 app.post('/search', isLoggedIn, catchAsync(async (req, res, next) => {
   if(!req.body.savedMeal) throw new ExpressError('Invalid Meal Data', 400);
   const savedMeal = new SavedMeal(req.body.savedMeal);
+  const user = await User.findById(req.user._id);
+  console.log(user);
   await savedMeal.save();
+  user.meals.push(savedMeal._id);
+  await user.save();
   req.flash('success', 'Meal Saved!')
 }));
 
