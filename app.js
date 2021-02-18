@@ -89,7 +89,7 @@ app.post('/search', isLoggedIn, catchAsync(async (req, res, next) => {
   req.flash('success', 'Meal Saved!')
 }));
 
-app.get('/myMeals', catchAsync(async (req, res, next) => {
+app.get('/myMeals', isLoggedIn, catchAsync(async (req, res, next) => {
   const savedMeal = await SavedMeal.find({});
 
   res.render('meals/myMeals', { savedMeal })
