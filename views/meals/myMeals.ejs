@@ -6,7 +6,7 @@
   </div>
 
   <section id="recipe-display" class="full-bleed">
-    <% for(let meal of savedMeal) {%> 
+    <% for(let meal of meals) {%>
       <div class="recipe-card">
         <img class="recipe-img" src="<%=meal.image%>">
         <h2><a href="<%=meal.sourceURL%>"><%=meal.label%></a></h2>

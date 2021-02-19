@@ -90,9 +90,17 @@ app.post('/search', isLoggedIn, catchAsync(async (req, res, next) => {
 }));
 
 app.get('/myMeals', isLoggedIn, catchAsync(async (req, res, next) => {
-  const savedMeal = await SavedMeal.find({});
+  // const savedMeal = await SavedMeal.find({});
+  const user = await User.findById(req.user._id);
+  const mealIds = user.meals;
+  let meals = [];
 
-  res.render('meals/myMeals', { savedMeal })
+  for(let mealId of mealIds){
+    const savedMeal = await SavedMeal.findById(mealId);
+    meals.push(savedMeal)
+  }
+ console.log(meals)
+  res.render('meals/myMeals', { meals })
 }));
 
 app.get('/mealPlan', (req, res) => {
