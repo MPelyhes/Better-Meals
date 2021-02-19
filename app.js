@@ -103,9 +103,15 @@ app.get('/myMeals', isLoggedIn, catchAsync(async (req, res, next) => {
   res.render('meals/myMeals', { meals })
 }));
 
+app.get('/myMeals/:id', catchAsync(async (req, res) => {
+  const meal = await SavedMeal.findById(req.params.id)
+
+  res.render('meals/show', { meal });
+}));
+
 app.get('/mealPlan', (req, res) => {
   res.render('meals/mealPlan')
-})
+});
 
 // User Routes //////////////////////////////////////////////
 app.get('/register', (req, res) => {

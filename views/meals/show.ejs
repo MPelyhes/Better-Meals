@@ -1,20 +1,10 @@
-<% layout('layouts/boilerplate')%>
-
-<main class="wrapper">
-  <div class="intro">
-    <h1>My Meals</h1>
-  </div>
+  <% layout('layouts/boilerplate')%>
 
   <section id="recipe-display" class="full-bleed">
-    <% for(let meal of meals) {%>
       <div class="recipe-card">
         <img class="recipe-img" src="<%=meal.image%>">
         <h2><a href="<%=meal.sourceURL%>"><%=meal.label%></a></h2>
         <p><%=meal.ingredients%></p>
         <i class="fas fa-clipboard-list fa-2x"></i>
       </div>
-      <a class="btn btn-primary" href="/myMeals/<%=meal._id%>">View Meal</a>
-    <% } %> 
   </section>
-
-</main>
