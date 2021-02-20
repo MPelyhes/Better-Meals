@@ -2,16 +2,16 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const session = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-const SavedMeal = require('./models/savedMeal');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-const { isLoggedIn } = require('./middleware');
+
+const meals = require('./routes/meals');
+const users = require('./routes/users');
 
 
 mongoose.connect('mongodb://localhost:27017/better-meals', {
@@ -66,92 +66,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get('/index', (req, res) => {
-  res.render('meals/index')
-})
-
-app.get('/search', catchAsync(async (req, res) => {
-  const user = await User.findById(req.params.id);
-  if(!user){
-    res.render('meals/search')
-  }
-  res.render('meals/search', { user })
-}))
-
-app.post('/search', isLoggedIn, catchAsync(async (req, res, next) => {
-  if(!req.body.savedMeal) throw new ExpressError('Invalid Meal Data', 400);
-  const savedMeal = new SavedMeal(req.body.savedMeal);
-  const user = await User.findById(req.user._id);
-  console.log(user);
-  await savedMeal.save();
-  user.meals.push(savedMeal._id);
-  await user.save();
-  req.flash('success', 'Meal Saved!')
-}));
-
-app.get('/myMeals', isLoggedIn, catchAsync(async (req, res, next) => {
-  // const savedMeal = await SavedMeal.find({});
-  const user = await User.findById(req.user._id);
-  const mealIds = user.meals;
-  let meals = [];
-
-  for(let mealId of mealIds){
-    const savedMeal = await SavedMeal.findById(mealId);
-    meals.push(savedMeal)
-  }
- console.log(meals)
-  res.render('meals/myMeals', { meals })
-}));
-
-app.get('/myMeals/:id', catchAsync(async (req, res) => {
-  const meal = await SavedMeal.findById(req.params.id)
-
-  res.render('meals/show', { meal });
-}));
-
-app.get('/mealPlan', (req, res) => {
-  res.render('meals/mealPlan')
-});
-
-// User Routes //////////////////////////////////////////////
-app.get('/register', (req, res) => {
-  res.render('users/register')
-})
-
-app.post('/register', catchAsync( async (req, res, next) => {
-  try {
-    const { email, username, password } = req.body;
-    const user = new User({ email, username });
-    const registeredUser = await User.register(user, password);
-    req.login(registeredUser, err => {
-      if(err) return next(err);
-      req.flash('success', 'Welcome to BetterMeals!');
-      res.redirect('/index');
-    })
-  } catch(e){
-      req.flash('error', e.message)
-      res.redirect('register')
-  }
-}))
-
-app.get('/login', (req, res) => {
-  res.render('users/login')
-})
-
-app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login'}), (req, res) => {
-  req.flash('success', 'Welcome back!');
-  const redirectUrl = req.session.returnTo || '/index';
-  delete req.session.returnTo;
-  res.redirect(redirectUrl);
-})
-
-app.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success', 'Goodbye!')
-  res.redirect('/index');
-})
-
-//////////////////////////////////////////////////////////////
+app.use('/', meals);
+app.use('/', users);
 
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404))
