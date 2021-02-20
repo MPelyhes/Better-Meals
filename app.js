@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 })
 
 app.use(passport.initialize());
-app.use(passport.session()); //Set up sessions! Sessions must come before this line!!!!
+app.use(passport.session()); 
 passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
