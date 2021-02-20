@@ -37,6 +37,14 @@ module.exports.renderMyMeals = async (req, res, next) => {
   res.render('meals/myMeals', { meals })
 };
 
+module.exports.deleteMeal = async(req, res) => {
+  const { id } = req.params
+  const user = await User.findById(req.user._id);
+  await user.updateOne({ $pull: { meals: id } })
+  req.flash('success', 'Successfully removed meal');
+  res.redirect('/myMeals')
+}
+
 module.exports.showMeal = async (req, res) => {
   const meal = await SavedMeal.findById(req.params.id)
 

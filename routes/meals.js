@@ -13,10 +13,12 @@ router.route('/search')
   .post( isLoggedIn, catchAsync(meals.saveMeal));
 
 router.route('/myMeals')
-  .get(isLoggedIn, catchAsync(meals.renderMyMeals));
+  .get(isLoggedIn, catchAsync(meals.renderMyMeals))
+  
 
 router.route('/myMeals/:id')
-  .get(catchAsync(meals.showMeal));
+  .get(catchAsync(meals.showMeal))
+  .delete(catchAsync(meals.deleteMeal))
 
 router.route('/mealPlan')
   .get(meals.renderMealPlan);
