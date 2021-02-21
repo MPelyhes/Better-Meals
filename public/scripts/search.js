@@ -101,11 +101,6 @@ const createUI = (obj)=> {
   caloriesForm.type = "hidden";
   caloriesForm.value = `${obj[i].recipe.calories}`;  
   caloriesForm.name = "savedMeal[calories]"
-
-  // const nutritionForm = document.createElement('input');
-  // nutritionForm.type = "hidden";
-  // nutritionForm.value = `${obj[i].recipe.totalNutrients}`;  
-  // nutritionForm.name = "savedMeal[nutrition]"  
   
   const saveButton = document.createElement('button');
   saveButton.innerText = 'Save Meal';
