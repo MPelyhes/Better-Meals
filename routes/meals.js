@@ -19,6 +19,7 @@ router.route('/myMeals')
 router.route('/myMeals/:id')
   .get(catchAsync(meals.showMeal))
   .delete(catchAsync(meals.deleteMeal))
+  .put(catchAsync(meals.addToMealPlan))
 
 router.route('/mealPlan')
   .get(meals.renderMealPlan);

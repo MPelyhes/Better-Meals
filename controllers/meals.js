@@ -51,6 +51,19 @@ module.exports.showMeal = async (req, res) => {
   res.render('meals/show', { meal });
 };
 
+module.exports.addToMealPlan = async (req, res, next) => {
+  try {
+    const { day, mealtime, mealId  } = req.body;
+    const user = await User.findById(req.user._id);
+    await user.updateOne({ $set: { ["mealplan." + day + "." + mealtime ]: mealId }});
+    console.log(user.mealplan);
+  } catch(e){
+    req.flash('error', e.message)
+    res.redirect('meals/show')
+  }
+}
+
+
 module.exports.renderMealPlan = (req, res) => {
   res.render('meals/mealPlan')
 };
