@@ -53,10 +53,12 @@ module.exports.showMeal = async (req, res) => {
 
 module.exports.addToMealPlan = async (req, res, next) => {
   try {
-    const { day, mealtime, mealId  } = req.body;
+    const { day, mealtime } = req.body;
+    const mealId = req.params.id;
     const user = await User.findById(req.user._id);
-    await user.updateOne({ $set: { ["mealplan." + day + "." + mealtime ]: mealId }});
-    console.log(user.mealplan);
+    await user.updateOne({ $set: { "mealplan" : `${day}` }});
+    console.log(day, mealtime, req.params.id);
+    req.flash('success', 'Meal Saved!')
   } catch(e){
     req.flash('error', e.message)
     res.redirect('meals/show')

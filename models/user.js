@@ -12,108 +12,130 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'savedMeal'
   }],
-  mealplan: [{
-    sunday: [{
-      breakfast: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      lunch: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      dinner: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],  
-    }],
-    monday: [{
-      breakfast: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      lunch: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      dinner: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],  
-    }],
-    tuesday: [{
-      breakfast: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      lunch: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      dinner: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],  
-    }],
-    wednesday: [{
-      breakfast: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      lunch: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      dinner: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],  
-    }],
-    thursday: [{
-      breakfast: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      lunch: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      dinner: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],  
-    }],
-    friday: [{
-      breakfast: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      lunch: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      dinner: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],  
-    }],
-    saturday: [{
-      breakfast: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      lunch: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],
-      dinner: [{   
-        type: Schema.Types.ObjectId,
-        ref: 'savedMeal'
-      }],  
-    }],
-  }]
+  mealplan: [MealPlanSchema]d
 });
 
+const MealPlanSchema = new Schema({
+  sunday: [{
+    breakfast: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    lunch: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    dinner: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },  
+  }],
+  monday: [{
+    breakfast: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    lunch: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    dinner: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },  
+  }],
+  tuesday: [{
+    breakfast: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    lunch: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    dinner: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },  
+  }],
+  wednesday: [{
+    breakfast: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    lunch: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    dinner: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },  
+  }],
+  thursday: [{
+    breakfast: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    lunch: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    dinner: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },  
+  }],
+  friday: [{
+    breakfast: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    lunch: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    dinner: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },  
+  }],
+  saturday: [{
+    breakfast: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    lunch: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },
+    dinner: {   
+      type: Schema.Types.ObjectId,
+      ref: 'savedMeal',
+      default: 'Nothing found'
+    },  
+  }],
+})
 UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);
