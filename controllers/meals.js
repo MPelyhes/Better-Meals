@@ -2,6 +2,7 @@ const SavedMeal = require('../models/savedMeal');
 const User = require('../models/user');
 const ExpressError = require('../utils/ExpressError');
 
+
 module.exports.index = (req, res) => {
   res.render('meals/index')
 };
@@ -54,11 +55,13 @@ module.exports.showMeal = async (req, res) => {
 module.exports.addToMealPlan = async (req, res, next) => {
   try {
     const { day, mealtime } = req.body;
-    const mealId = req.params.id;
+    const update = day+mealtime;
+    const meal = req.params.id;
     const user = await User.findById(req.user._id);
-    await user.updateOne({ $set: { "mealplan" : `${day}` }});
-    console.log(day, mealtime, req.params.id);
+    await user.update({$set: {[update]: meal}})
+    console.log(user)
     req.flash('success', 'Meal Saved!')
+    res.redirect('back')
   } catch(e){
     req.flash('error', e.message)
     res.redirect('meals/show')
