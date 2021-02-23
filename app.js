@@ -69,6 +69,10 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/', meals);
 app.use('/', users);
 
+app.get('/home', (req, res) => {
+  res.render('meals/home');
+})
+
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404))
 })
