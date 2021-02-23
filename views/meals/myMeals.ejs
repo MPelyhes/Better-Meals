@@ -10,7 +10,7 @@
       <div class="recipe-card">
         <img class="recipe-img" src="<%=meal.image%>">
         <h2><a href="<%=meal.sourceURL%>"><%=meal.label%></a></h2>
-        <p><%=meal.ingredients%></p>
+        <p><%=meal.ingredients.toString().substring(0,100)%> . . .</p>
         <i class="fas fa-clipboard-list fa-2x"></i>
       </div>
       <div>

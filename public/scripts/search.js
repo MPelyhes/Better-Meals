@@ -57,7 +57,7 @@ const createUI = (obj)=> {
   h2.innerText = `${obj[i].recipe.label}`;
 
   const paragraph = document.createElement('p');
-  paragraph.innerText =`${obj[i].recipe.ingredientLines}`;
+  paragraph.innerText =`${obj[i].recipe.ingredientLines.toString().substring(0,100)}. . .`;
 
   const saveIcon = document.createElement('i');
   saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');

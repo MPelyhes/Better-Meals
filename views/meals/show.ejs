@@ -26,6 +26,7 @@
       <div class="modal-body">
         <form action="/myMeals/<%=meal._id%>?_method=PUT" method="POST">
           <div>
+            <h5>Select Day</h5>
               <input type="radio" class="btn-check" name="day" id="sunday" autocomplete="off" value="sunday">
               <label class="btn btn-outline-success" for="sunday">Sunday</label>
               <input type="radio" class="btn-check" name="day" id="monday" autocomplete="off" value="monday">
@@ -42,6 +43,7 @@
               <label class="btn btn-outline-success" for="saturday">Saturday</label>
           </div>
           <div>
+            <h5>Select Mealtime</h5>
             <input type="radio" class="btn-check" name="mealtime" id="breakfast" autocomplete="off" value="breakfast">
             <label class="btn btn-outline-success" for="breakfast">Breakfast</label>
             <input type="radio" class="btn-check" name="mealtime" id="lunch" autocomplete="off" value="lunch">
