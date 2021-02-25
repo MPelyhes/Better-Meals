@@ -11,42 +11,44 @@
   <link rel="stylesheet" href="/styles/mealstyles.css" type="text/css">
   <link rel="stylesheet" href="/styles/searchstyles.css" type="text/css">
   <link rel="stylesheet" href="/styles/home.css" type="text/css">
+  <script src="https://kit.fontawesome.com/defb058ca4.js" crossorigin="anonymous"></script>
   <title>Better Meals</title>
 
 </head>
 
-<body class="d-flex text-center text-white bg-dark">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="mb-auto">
-          <div>
-            <h3 class="float-md-left mb-0">BetterMeals<i class="fas fa-leaf"></i></h3>
-              <nav class="nav nav-masthead justify-content-center float-md-right">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  <a class="nav-link" href="/search">Search Meals</a>
-                  <a class="nav-link" href="/myMeals">My Meals</a>
-                  <a class="nav-link" href="/mealPlan">Meal Plan</a>
-                  <% if(!currentUser) { %>
-                  <a class="nav-link" href="/login">Login</a>
-                  <a class="nav-link" href="/register">Register</a>
-                  <% } else { %>
-                  <a class="nav-link" href="/logout">Logout</a>
-                  <% } %>
-              </nav>
-          </div>
-      </header>
-      <main class="px-3">
-          <h1>BetterMeals<i class="fas fa-leaf"></i></h1>
-          <p class="lead"> Welcome to BetterMeals! <br> Jump right in and explore our countless recipes. <br>
-              Save your favorites and create a meal plan full of delicious meals.</p>
-          <a href="/search" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white">Get Started</a>
-      </main>
+<body>
+    <div class="head-container">
+        <div class="logo-container">
+            <h3 class="logo">BetterMeals<i class="fas fa-leaf"></i></h3>
+        </div> 
+        <nav class="nav">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="/search">Search Meals</a>
+            <a class="nav-link" href="/myMeals">My Meals</a>
+            <a class="nav-link" href="/mealPlan">Meal Plan</a>
+            <% if(!currentUser) { %>
+            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="/register">Register</a>
+            <% } else { %>
+            <a class="nav-link" href="/logout">Logout</a>
+            <% } %>
+        </nav>
+    </div>
+    <div class="main-container">
+        <!-- <main class="text-container"> -->
+            <h1>BetterMeals<i class="fas fa-leaf"></i></h1>
+            <p class="lead"> Welcome to BetterMeals! <br> Jump right in and explore our countless recipes. <br>
+                Save your favorites and create a meal plan full of delicious meals.</p>
+            <a href="/search" class="btn btn-success">Get Started</a>
+        <!-- </main> -->
+  
+        <footer class="mt-auto text-white-50">
+            <p>&copy; 2020 </p>
+        </footer>
+    </div>
 
-      <footer class="mt-auto text-white-50">
-          <p>&copy; 2020 </p>
-      </footer>
 
 
-  </div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -58,3 +60,36 @@
 </body>
 
 </html>
+
+<!-- <body class="d-flex text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+              <h3 class="float-md-left mb-0">BetterMeals<i class="fas fa-leaf"></i></h3>
+                <nav class="nav nav-masthead justify-content-center float-md-right">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="/search">Search Meals</a>
+                    <a class="nav-link" href="/myMeals">My Meals</a>
+                    <a class="nav-link" href="/mealPlan">Meal Plan</a>
+                    <% if(!currentUser) { %>
+                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/register">Register</a>
+                    <% } else { %>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+                </nav>
+            </div>
+        </header>
+        <main class="px-3">
+            <h1>BetterMeals<i class="fas fa-leaf"></i></h1>
+            <p class="lead"> Welcome to BetterMeals! <br> Jump right in and explore our countless recipes. <br>
+                Save your favorites and create a meal plan full of delicious meals.</p>
+            <a href="/search" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white">Get Started</a>
+        </main>
+  
+        <footer class="mt-auto text-white-50">
+            <p>&copy; 2020 </p>
+        </footer>
+  
+  
+    </div> -->
