@@ -53,14 +53,11 @@ const createUI = (obj)=> {
   recipeImg.src = `${obj[i].recipe.image}`;
   recipeImg.classList.add('recipe-img')
 
-  const h2 = document.createElement('h2');
+  const h2 = document.createElement('h3');
   h2.innerText = `${obj[i].recipe.label}`;
 
   const paragraph = document.createElement('p');
   paragraph.innerText =`${obj[i].recipe.ingredientLines.toString().substring(0,100)} . . .`;
-
-  const saveIcon = document.createElement('i');
-  saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');
   
   const saveForm = document.createElement('form');
   saveForm.action = "/search"
@@ -107,7 +104,7 @@ const createUI = (obj)=> {
 
   //Adding recipe card to the main section and all other elements to recipe card
   mainSection.appendChild(recipeCard);
-  recipeCard.append(recipeImg, h2, paragraph, saveIcon, saveForm);
+  recipeCard.append(recipeImg, h3, paragraph, saveForm);
   saveForm.append(labelForm, imageForm, sourceForm, sourceUrlForm, servingsForm, ingredientsForm, caloriesForm, saveButton);
   }
 }

@@ -5,19 +5,29 @@
     <h1>My Meals</h1>
   </div>
 
-  <section id="recipe-display" class="full-bleed">
+  <section id="recipe-display">
     <% for(let meal of meals) {%>
       <div class="recipe-card">
         <img class="recipe-img" src="<%=meal.image%>">
-        <h2><a href="<%=meal.sourceURL%>"><%=meal.label%></a></h2>
-        <p><%=meal.ingredients.toString().substring(0,100)%> . . .</p>
-        <i class="fas fa-clipboard-list fa-2x"></i>
+        <div class="meal-box">
+          <div class="source-links">
+            <h3><a href="<%=meal.sourceURL%>"><%=meal.label%></a></h3>
+            <p class="source">Source: <%= meal.source %> </p>
+          </div>
+          <p>Ingredients: <%=meal.ingredients.toString().substring(0,400)%> . . .</p>
+          <div class="nutrition-facts">
+            <p>Servings: <%=meal.servings%></p>
+            <p>Calories per: <%=Math.floor(meal.calories / meal.servings)%></p>
+          </div>
+          <div class="meal-buttons">
+            <a class="view-meal-btn" href="/myMeals/<%=meal._id%>">View Meal</a>
+            <form class="d-inline" action="/myMeals/<%=meal._id%>?_method=DELETE" method="POST">
+              <button class="delete-btn">Delete</button>
+            </form>
+          </div>
+        </div> 
       </div>
       <div>
-      <a class="btn btn-primary" href="/myMeals/<%=meal._id%>">View Meal</a>
-      <form class="d-inline" action="/myMeals/<%=meal._id%>?_method=DELETE" method="POST">
-        <button class="btn btn-danger">Delete</button>
-      </form>
     <% } %> 
   </section>
 

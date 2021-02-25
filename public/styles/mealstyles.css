@@ -17,18 +17,6 @@ body {
   /* background-color: linear-gradient(rgba(0, 0, 0, 0.5); */
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr min(65ch, 100%) 1fr;
-}
-.wrapper > * {
-  grid-column: 2;
-}
-.full-bleed {
-  width: 100%;
-  grid-column: 1 / 4;
-}
-
 /* Navigation Start  */
 
 .head-container {
@@ -39,7 +27,7 @@ body {
   margin-top: 0;
   margin-bottom: 3rem;
   padding: 0.75rem 0;
-  border-bottom: 3px solid var(--light) ;
+  border-bottom: 4px solid var(--light) ;
 }
 
 .logo {
@@ -90,7 +78,7 @@ h1 {
   color: var(--medium);
   margin-bottom: 2rem;
 }
-h2{
+h2, h3, p{
   color: var(--dark);
 }
 
@@ -104,17 +92,13 @@ h2{
     align-items: center;
   }
   .logo-container{
-    /* flex-direction: row; */
     align-items: center;
   }
-
   .nav{
     margin:auto;
     align-items: center;
   }
-
   h1{
     font-size: 2rem;
   }
-  
 } 
