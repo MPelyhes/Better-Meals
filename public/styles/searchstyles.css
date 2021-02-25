@@ -1,33 +1,47 @@
-
-.options ul {
-  list-style: none;
-  display: grid;
-  grid-gap: 1rem;
-  padding: 0;
-  margin-top: 2rem;
-  list-style: none;
-  grid-template-columns: repeat(4, 1fr);
+:root {
+  --primary: #E5F2C9;
+  --dark: #154001;
+  --medium: #467302;
+  --light: #84BF04;
+  --secondary: #D9F2B3;
+  --card: #D0F2EA;
+  --shadow: 0 1px 5 px rgbs(104, 104, 104, 0.8)
 }
 
-.options li {
-  display: block;
-  text-decoration: none;
-  padding: 0.8rem;
+.search-container {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  color: var(--dark);
-  text-transform: uppercase;
-  border: 2px dashed var(--dark);
-  border-radius: 5px;
-  font-size: 1.1rem;
+  margin: auto;
+  width: 500px;
 }
 
-.options li:hover {
-  padding: 0.8rem;
-  text-align: center;
-  color: var(--dark);
-  border: 2px dashed var(--dark);
-  border-radius: 5px;
-  background-color: var(--secondary);
+#search {
+  margin: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  font-size: 1.2rem;
+  color:var(--medium);
+}
+
+#search-button {
+  margin: 1rem auto;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: var(--dark);
+  color: var(--primary);
+  border-radius: 3px;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+  transition: all 0.5s ease;
+  width: 250px;
+}
+
+#search-button:hover {
+  border-radius: 10px;
+  box-shadow: 0 8px 6px -6px black;
+  cursor: pointer;
 }
 
 #recipe-display {
@@ -54,9 +68,7 @@
   text-align: center;
 }
 
-#this-one {
-  justify-self: left;
-}
+
 
 .recipe-img {
   max-width: 80%;
@@ -69,10 +81,6 @@
 .recipe-card p {
   margin: 0 0 0.5rem 1rem;
   width: 80%;
-}
-
-h2 {
-  margin: 0;
 }
 
 .fa-clipboard-list {

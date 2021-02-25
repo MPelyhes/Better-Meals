@@ -131,6 +131,7 @@ p{
   border: 1px solid var(--dark);
   box-shadow: var(--shadow);
 }
+
 footer{
   display: flex;
   flex-direction: row;

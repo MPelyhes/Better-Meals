@@ -3,7 +3,7 @@ class Recipe {
   constructor(){
     this.app_id = '33ef320b';
     this.app_key = '16dec4e1cfa93d80d4ed52aa172ddb5e';
-    this.recipe_count = 10;
+    this.recipe_count = 20;
   }
 
   async getRecipe(searchQ) {
@@ -57,7 +57,7 @@ const createUI = (obj)=> {
   h2.innerText = `${obj[i].recipe.label}`;
 
   const paragraph = document.createElement('p');
-  paragraph.innerText =`${obj[i].recipe.ingredientLines.toString().substring(0,100)}. . .`;
+  paragraph.innerText =`${obj[i].recipe.ingredientLines.toString().substring(0,100)} . . .`;
 
   const saveIcon = document.createElement('i');
   saveIcon.classList.add('fas', 'fa-clipboard-list', 'fa-2x');
