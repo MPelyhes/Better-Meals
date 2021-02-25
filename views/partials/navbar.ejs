@@ -1,27 +1,18 @@
-<!-- <nav class="main-nav full-bleed">
-  <ul>
-    <li class="logo">Better&nbspMeals&nbsp<i class="fas fa-leaf"></i></li>
-    <li><a href="/index">Home</a></li>
-    <li><a href="/search">Search&nbspMeals</a></li>
-    <li><a href="/myMeals">My&nbspMeals</a></li>
-    <li><a href="/mealPlan">Meal&nbspPlan</a></li>
-  </ul>
-</nav> -->
 
-<header class="mb-auto">
-  <div>
-    <h3 class="float-md-left mb-0">BetterMeals<i class="fas fa-leaf"></i></h3>
-      <nav class="nav nav-masthead justify-content-center float-md-right">
-          <a class="nav-link active" aria-current="page" href="/index">Home</a>
-          <a class="nav-link" href="/search">Search Meals</a>
-          <a class="nav-link" href="/myMeals">My Meals</a>
-          <a class="nav-link" href="/mealPlan">Meal Plan</a>
-          <% if(!currentUser) { %>
-          <a class="nav-link" href="/login">Login</a>
-          <a class="nav-link" href="/register">Register</a>
-          <% } else { %>
-          <a class="nav-link" href="/logout">Logout</a>
-          <% } %>
-      </nav>
-  </div>
-</header>
+<div class="head-container">
+  <div class="logo-container">
+      <h3 class="logo">BetterMeals<i class="fas fa-leaf"></i></h3>
+  </div> 
+  <nav class="nav">
+      <a class="nav-link active" href="#">Home</a>
+      <a class="nav-link" href="/search">Search Meals</a>
+      <a class="nav-link" href="/myMeals">My Meals</a>
+      <a class="nav-link" href="/mealPlan">Meal Plan</a>
+      <% if(!currentUser) { %>
+      <a class="nav-link" href="/login">Login</a>
+      <a class="nav-link" href="/register">Register</a>
+      <% } else { %>
+      <a class="nav-link" href="/logout">Logout</a>
+      <% } %>
+  </nav>
+</div>
