@@ -22,7 +22,9 @@ module.exports.saveMeal = async (req, res, next) => {
   await savedMeal.save();
   user.meals.push(savedMeal._id);
   await user.save();
-  req.flash('success', 'Meal Saved!')
+  req.flash('messages', {'success': 'Meal Saved!'})
+  res.locals.messages = req.flash();
+  res.render('meals/search')
 };
 
 module.exports.renderMyMeals = async (req, res, next) => {

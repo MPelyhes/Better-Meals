@@ -42,6 +42,9 @@
   border-radius: 10px;
   box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
+
+  font-size: 1.21rem;
+
 }
 
 #recipe-display {
