@@ -1,19 +1,35 @@
   <% layout('layouts/boilerplate')%>
 
   <section id="recipe-display" class="full-bleed">
-      <div class="recipe-card">
-        <img class="recipe-img" src="<%=meal.image%>">
-        <h2><a href="<%=meal.sourceURL%>"><%=meal.label%></a></h2>
-        <p><%=meal.ingredients%></p>
-        <i class="fas fa-clipboard-list fa-2x"></i>
-      </div>
+    <div class="recipe-card">
+      <img class="recipe-img" src="<%=meal.image%>">
+      <div class="meal-box">
+        <div class="source-links">
+          <h3><a href="<%=meal.sourceURL%>"><%=meal.label%></a></h3>
+          <p class="source">Source: <%= meal.source%></p>
+        </div>
+        <p>Ingredients: <%=meal.ingredients%></p>
+        <div class="nutrition-facts">
+          <p>Servings: <%=meal.servings%></p>
+          <p>Calories per: <%=Math.floor(meal.calories / meal.servings)%></p>
+          <p><a href="<%=meal.sourceURL%>">Directions</a></p>
+        </div>
+        <div class="meal-buttons">
+          <button type="button" class="add-meal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Add to Meal Plan
+          </button>
+          <form class="d-inline" action="/myMeals/<%=meal._id%>?_method=DELETE" method="POST">
+            <button class="delete-btn">Delete</button>
+          </form>
+        </div>
+      </div> 
+    </div>
+    <div>
       <!-- <div class="btn btn-warning" id="meal-plan-btn">Add to Meal Plan</div> -->
   </section>
   <div>
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Add to Meal Plan
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,9 +69,9 @@
          </div>
          <div class="modal-footer">
           
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="add-meal-btn">Save changes</button>
         </div>
-<input type="submit">
+<!-- <input type="submit"> -->
         </form>
       </div>
     </div>
