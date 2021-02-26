@@ -3,7 +3,7 @@ class Recipe {
   constructor(){
     this.app_id = '33ef320b';
     this.app_key = '16dec4e1cfa93d80d4ed52aa172ddb5e';
-    this.recipe_count = 20;
+    this.recipe_count = 50;
   }
 
   async getRecipe(searchQ) {
@@ -45,20 +45,47 @@ searchBtn.addEventListener('click', ()=> {
 const createUI = (obj)=> {
   // For loop to create recipe cards
   for(let i = 0; i <= obj.length; i++){
-    // Recipe card div with all its elements
+    // All divs that will be used in the recipe display
   const recipeCard = document.createElement('div');
   recipeCard.classList.add('recipe-card');
 
+  const mealBox = document.createElement('div');
+  mealBox.classList.add('meal-box');
+
+  const sourceLinks = document.createElement('div');
+  sourceLinks.classList.add('source-links')  ;
+
+  const nutritionFacts = document.createElement('div');
+  nutritionFacts.classList.add('nutrition-facts');
+
+  const mealBtns = document.createElement('div');
+  mealBtns.classList.add('meal-buttons')  ;
+
+  // All info from the recipe request
   const recipeImg = document.createElement('img');
   recipeImg.src = `${obj[i].recipe.image}`;
   recipeImg.classList.add('recipe-img')
 
-  const h2 = document.createElement('h3');
-  h2.innerText = `${obj[i].recipe.label}`;
+  const h3 = document.createElement('h3');
+  h3.innerText = `${obj[i].recipe.label}`;
 
   const paragraph = document.createElement('p');
   paragraph.innerText =`${obj[i].recipe.ingredientLines.toString().substring(0,100)} . . .`;
   
+  const sourceURL = document.createElement('a');
+  sourceURL.href =`${obj[i].recipe.sourceURL}`;
+  
+  const sourceName = document.createElement('p');
+  sourceName.classList.add('source');
+  sourceName.innerText = `Source: ${obj[i].recipe.source}`;
+
+  const servings = document.createElement('p');
+  servings.innerText = `Servings: ${obj[i].recipe.yield}`
+
+  const caloriesPer = document.createElement('p');
+  caloriesPer.innerText = `Calories per: ${Math.floor(obj[i].recipe.calories / obj[i].recipe.yield)}`;
+
+  //Save form post action
   const saveForm = document.createElement('form');
   saveForm.action = "/search"
   saveForm.method ="POST"
@@ -100,11 +127,17 @@ const createUI = (obj)=> {
   caloriesForm.name = "savedMeal[calories]"
   
   const saveButton = document.createElement('button');
+  saveButton.classList.add('save-meal-btn');
   saveButton.innerText = 'Save Meal';
 
   //Adding recipe card to the main section and all other elements to recipe card
   mainSection.appendChild(recipeCard);
-  recipeCard.append(recipeImg, h3, paragraph, saveForm);
-  saveForm.append(labelForm, imageForm, sourceForm, sourceUrlForm, servingsForm, ingredientsForm, caloriesForm, saveButton);
+  h3.append(sourceURL);
+  sourceLinks.append(h3, sourceName);
+  mealBox.append(sourceLinks, paragraph, nutritionFacts, mealBtns);
+  nutritionFacts.append(servings, caloriesPer);
+  mealBtns.append(saveForm);
+  recipeCard.append(recipeImg, mealBox);
+  saveForm.append(labelForm, imageForm, sourceForm, sourceUrlForm, servingsForm, ingredientsForm, caloriesForm, saveButton,);
   }
 }
