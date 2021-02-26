@@ -17,9 +17,9 @@ router.route('/myMeals')
   
 
 router.route('/myMeals/:id')
-  .get(catchAsync(meals.showMeal))
-  .delete(catchAsync(meals.deleteMeal))
-  .put(catchAsync(meals.addToMealPlan))
+  .get(isLoggedIn, catchAsync(meals.showMeal))
+  .delete(isLoggedIn, catchAsync(meals.deleteMeal))
+  .put(isLoggedIn, catchAsync(meals.addToMealPlan))
 
 router.route('/mealPlan')
   .get(meals.renderMealPlan);
