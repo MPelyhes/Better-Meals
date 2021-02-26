@@ -23,13 +23,6 @@ const search = document.querySelector('#search');
 const searchBtn = document.querySelector('#search-button');
 const recipes = new Recipe
 
-mainSection.addEventListener('click', (e)=> {
-
-  if(e.target.className === 'fas fa-clipboard-list fa-2x' ){
-    const saveIcon = e.target;
-  }
-})
-
 searchBtn.addEventListener('click', ()=> {
   let searchQ = search.value;
   if(searchQ !== ''){

@@ -69,6 +69,32 @@ module.exports.addToMealPlan = async (req, res, next) => {
 }
 
 
-module.exports.renderMealPlan = (req, res) => {
-  res.render('meals/mealPlan')
+module.exports.renderMealPlan = async (req, res) => {
+  const user = await User.findById(req.user._id);
+  const sundayBreakfast = await SavedMeal.findById(user.sundaybreakfast);
+  const sundayLunch = await SavedMeal.findById(user.sundaylunch);
+  const sundayDinner = await SavedMeal.findById(user.sundaydinner);
+  const mondayBreakfast = await SavedMeal.findById(user.mondaybreakfast);
+  const mondayLunch = await SavedMeal.findById(user.mondaylunch);
+  const mondayDinner = await SavedMeal.findById(user.mondaydinner);
+  const tuesdayBreakfast = await SavedMeal.findById(user.tuesdaybreakfast);
+  const tuesdayLunch = await SavedMeal.findById(user.tuesdaylunch);
+  const tuesdayDinner = await SavedMeal.findById(user.tuesdaydinner);
+  const wednesdayBreakfast = await SavedMeal.findById(user.wednesdaybreakfast);
+  const wednesdayLunch = await SavedMeal.findById(user.wednesdaylunch);
+  const wednesdayDinner = await SavedMeal.findById(user.wednesdaydinner);
+  const thursdayBreakfast = await SavedMeal.findById(user.thursdaybreakfast);
+  const thursdayLunch = await SavedMeal.findById(user.thursdaylunch);
+  const thursdayDinner = await SavedMeal.findById(user.thursdaydinner);
+  const fridayBreakfast = await SavedMeal.findById(user.fridaybreakfast);
+  const fridayLunch = await SavedMeal.findById(user.fridaylunch);
+  const fridayDinner = await SavedMeal.findById(user.fridaydinner);
+  const saturdayBreakfast = await SavedMeal.findById(user.saturdaybreakfast);
+  const saturdayLunch = await SavedMeal.findById(user.saturdaylunch);
+  const saturdayDinner = await SavedMeal.findById(user.saturdaydinner);
+
+  // res.send({ sundayBreakfast, sundayLunch, sundayDinner, mondayBreakfast, mondayLunch, mondayDinner, tuesdayBreakfast, tuesdayLunch, tuesdayDinner, wednesdayBreakfast, wednesdayLunch, wednesdayDinner, thursdayBreakfast, thursdayLunch, thursdayDinner, fridayBreakfast, fridayLunch, fridayDinner, saturdayBreakfast, saturdayLunch, saturdayDinner })
+
+
+  res.render('meals/mealPlan', { sundayBreakfast, sundayLunch, sundayDinner, mondayBreakfast, mondayLunch, mondayDinner, tuesdayBreakfast, tuesdayLunch, tuesdayDinner, wednesdayBreakfast, wednesdayLunch, wednesdayDinner, thursdayBreakfast, thursdayLunch, thursdayDinner, fridayBreakfast, fridayLunch, fridayDinner, saturdayBreakfast, saturdayLunch, saturdayDinner })
 };
