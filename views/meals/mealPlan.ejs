@@ -13,6 +13,7 @@
     <div class="meal-titles">
        <% if(sundayBreakfast) {%> 
         <div>
+          <p>Breakfast</p>
           <h4>
             <a href="/myMeals/<%=sundayBreakfast._id%>"><%=sundayBreakfast.label%></a>
           <h4>
@@ -21,6 +22,7 @@
        <% } %>  
       <% if(sundayLunch) {%> 
         <div>
+          <p>Lunch</p>
           <h4>
             <a href="/myMeals/<%=sundayLunch._id%>"><%=sundayLunch.label%></a>
           <h4>
@@ -29,6 +31,7 @@
       <% } %> 
       <% if(sundayDinner) {%> 
         <div>
+         <p>Dinner</p>
           <h4>
             <a href="/myMeals/<%=sundayDinner._id%>"><%=sundayDinner.label%></a>
           <h4>
