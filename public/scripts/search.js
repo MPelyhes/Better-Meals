@@ -76,7 +76,7 @@ const createUI = (obj)=> {
   servings.innerText = `Servings: ${obj[i].recipe.yield}`
 
   const caloriesPer = document.createElement('p');
-  caloriesPer.innerText = `Calories${Math.floor(obj[i].recipe.calories / obj[i].recipe.yield)}/serving`;
+  caloriesPer.innerText = `Calories: ${Math.floor(obj[i].recipe.calories / obj[i].recipe.yield)}/serving`;
 
   //Save form post action
   const saveForm = document.createElement('form');
