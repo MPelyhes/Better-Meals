@@ -157,6 +157,7 @@
   padding: 0.75rem;
   background-color: var(--dark);
   color: var(--primary);
+  border: none;
   border-radius: 3px;
   font-size: 1rem;
   letter-spacing: 1.5px;
@@ -171,17 +172,17 @@
 }
 
 .add-meal-btn {
-    margin-right: 6px;
-    margin-left: 8px;
-    padding: 0.75rem;
-    background-color: var(--dark);
-    color: var(--primary);
-    border: none;
-    border-radius: 3px;
-    font-size: 1rem;
-    letter-spacing: 1.5px;
-    transition: all 0.2s ease;
-    max-height: 46px;
+  margin-right: 6px;
+  margin-left: 8px;
+  padding: 0.75rem;
+  background-color: var(--dark);
+  color: var(--primary);
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  transition: all 0.2s ease;
+  max-height: 46px;
 }
 
 .add-meal-btn:hover {
@@ -206,8 +207,8 @@
     width: 400px;
   }
   .recipe-img{
-    max-width:250px;
-    min-width: 100px;
+    max-width:90%;
+    min-width: 75px;
     margin: 2rem auto;
   }
 }

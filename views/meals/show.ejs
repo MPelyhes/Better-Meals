@@ -1,35 +1,33 @@
-  <% layout('layouts/boilerplate')%>
+<% layout('layouts/boilerplate')%>
 
-  <section id="recipe-display" class="full-bleed">
-    <div class="recipe-card">
-      <img class="recipe-img" src="<%=meal.image%>">
-      <div class="meal-box">
-        <div class="source-links">
-          <h3><a href="<%=meal.sourceURL%>"><%=meal.label%></a></h3>
-          <p class="source">Source: <%= meal.source%></p>
-        </div>
-        <p>Ingredients: <%=meal.ingredients%></p>
-        <div class="nutrition-facts">
-          <p>Servings: <%=meal.servings%></p>
-          <p>Calories per: <%=Math.floor(meal.calories / meal.servings)%></p>
-          <p><a href="<%=meal.sourceURL%>">Directions</a></p>
-        </div>
-        <div class="meal-buttons">
-          <button type="button" class="add-meal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Add to Meal Plan
-          </button>
-          <form class="d-inline" action="/myMeals/<%=meal._id%>?_method=DELETE" method="POST">
-            <button class="delete-btn">Delete</button>
-          </form>
-        </div>
-      </div> 
-    </div>
-    <div>
-      <!-- <div class="btn btn-warning" id="meal-plan-btn">Add to Meal Plan</div> -->
-  </section>
+<section id="recipe-display" class="full-bleed">
+  <div class="recipe-card">
+    <img class="recipe-img" src="<%=meal.image%>">
+    <div class="meal-box">
+      <div class="source-links">
+        <h3><a href="<%=meal.sourceURL%>" target="_blank" rel="noopener noreferrer"><%=meal.label%></a></h3>
+        <p class="source">Source: <%= meal.source%></p>
+      </div>
+      <p>Ingredients: <%=meal.ingredients%></p>
+      <div class="nutrition-facts">
+        <p>Servings: <%=meal.servings%></p>
+        <p>Calories: <%=Math.floor(meal.calories / meal.servings)%>/serving</p>
+        <p><a href="<%=meal.sourceURL%>" target="_blank" rel="noopener noreferrer">Directions</a></p>
+      </div>
+      <div class="meal-buttons">
+        <button type="button" class="add-meal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add to Meal Plan
+        </button>
+        <form class="d-inline" action="/myMeals/<%=meal._id%>?_method=DELETE" method="POST">
+          <button class="delete-btn">Delete</button>
+        </form>
+      </div>
+    </div> 
+  </div>
   <div>
-    <!-- Button trigger modal -->
-
+</section>
+<div>
+  <!-- Button trigger modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,7 +49,7 @@
               <label class="btn btn-outline-success" for="tuesday">Tuesday</label>
               <input type="radio" class="btn-check" name="day" id="wednesday" autocomplete="off" value="wednesday">
               <label class="btn btn-outline-success" for="wednesday">Wednesday</label>
-              <input type="radio" class="btn-check" name="day" id="thursday" autocomplete="off" value="Thursday">
+              <input type="radio" class="btn-check" name="day" id="thursday" autocomplete="off" value="thursday">
               <label class="btn btn-outline-success" for="thursday">Thursday</label>
               <input type="radio" class="btn-check" name="day" id="friday" autocomplete="off" value="friday"> 
               <label class="btn btn-outline-success" for="friday">Friday</label>
@@ -68,10 +66,8 @@
             <label class="btn btn-outline-success" for="dinner">Dinner</label>
          </div>
          <div class="modal-footer">
-          
-          <button type="submit" class="add-meal-btn">Save changes</button>
+          <input type="submit" class="save-meal-btn">
         </div>
-<!-- <input type="submit"> -->
         </form>
       </div>
     </div>

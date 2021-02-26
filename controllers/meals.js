@@ -59,7 +59,7 @@ module.exports.addToMealPlan = async (req, res, next) => {
     const meal = req.params.id;
     const user = await User.findById(req.user._id);
     await user.update({$set: {[update]: meal}})
-    console.log(user)
+    console.log(user);
     req.flash('success', 'Meal Saved!')
     res.redirect('back')
   } catch(e){
