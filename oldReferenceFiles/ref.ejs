@@ -1,0 +1,82 @@
+<% layout('layouts/boilerplate')%>
+
+<section id="recipe-display" class="full-bleed">
+  <div class="recipe-card">
+    <img class="recipe-img" src="<%=meal.image%>">
+    <div class="meal-box">
+      <div class="source-links">
+        <h3><a href="<%=meal.sourceURL%>" target="_blank" rel="noopener noreferrer"><%=meal.label%></a></h3>
+        <p class="source">Source: <%= meal.source%></p>
+      </div>
+      <p>Ingredients: <%=meal.ingredients%></p>
+      <div class="nutrition-facts">
+        <p>Servings: <%=meal.servings%></p>
+        <p>Calories: <%=Math.floor(meal.calories / meal.servings)%>/serving</p>
+        <p><a href="<%=meal.sourceURL%>" target="_blank" rel="noopener noreferrer">Directions</a></p>
+      </div>
+      <div class="meal-buttons">
+        <button type="button" class="add-meal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add to Meal Plan
+        </button>
+        <form class="d-inline" action="/myMeals/<%=meal._id%>?_method=DELETE" method="POST">
+          <button class="delete-btn">Delete</button>
+        </form>
+      </div>
+    </div> 
+  </div>
+  <div>
+    <!-- <div class="btn btn-warning" id="meal-plan-btn">Add to Meal Plan</div> -->
+</section>
+<div>
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add to Meal Plan</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form action="/myMeals/<%=meal._id%>?_method=PUT" method="POST">
+        <div>
+          <h5>Select Day</h5>
+            <input type="radio" class="btn-check" name="day" id="sunday" autocomplete="off" value="sunday">
+            <label class="btn btn-outline-success" for="sunday">Sunday</label>
+            <input type="radio" class="btn-check" name="day" id="monday" autocomplete="off" value="monday">
+            <label class="btn btn-outline-success" for="monday">Monday</label>
+            <input type="radio" class="btn-check" name="day" id="tuesday" autocomplete="off" value="tuesday">
+            <label class="btn btn-outline-success" for="tuesday">Tuesday</label>
+            <input type="radio" class="btn-check" name="day" id="wednesday" autocomplete="off" value="wednesday">
+            <label class="btn btn-outline-success" for="wednesday">Wednesday</label>
+            <input type="radio" class="btn-check" name="day" id="thursday" autocomplete="off" value="Thursday">
+            <label class="btn btn-outline-success" for="thursday">Thursday</label>
+            <input type="radio" class="btn-check" name="day" id="friday" autocomplete="off" value="friday"> 
+            <label class="btn btn-outline-success" for="friday">Friday</label>
+            <input type="radio" class="btn-check" name="day" id="saturday" autocomplete="off" value="saturday">
+            <label class="btn btn-outline-success" for="saturday">Saturday</label>
+        </div>
+        <div>
+          <h5>Select Mealtime</h5>
+          <input type="radio" class="btn-check" name="mealtime" id="breakfast" autocomplete="off" value="breakfast">
+          <label class="btn btn-outline-success" for="breakfast">Breakfast</label>
+          <input type="radio" class="btn-check" name="mealtime" id="lunch" autocomplete="off" value="lunch">
+          <label class="btn btn-outline-success" for="lunch">Lunch</label>
+          <input type="radio" class="btn-check" name="mealtime" id="dinner" autocomplete="off" value="dinner">
+          <label class="btn btn-outline-success" for="dinner">Dinner</label>
+       </div>
+       <div class="modal-footer">
+        
+        <input type="submit" class="add-meal-btn"></button>
+      </div>
+<input type="submit">
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="/scripts/showPage.js"></script>
