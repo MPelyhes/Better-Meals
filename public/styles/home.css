@@ -1,9 +1,9 @@
 :root {
-  --primary: #E5F2C9;
+  --primary: #e5f2c9;
   --dark: #154001;
   --medium: #467302;
   --light: #84BF04;
-  --secondary: #D9F2B3;
+  --secondary: rgb(217, 242, 179);
   --card: #D0F2EA;
   --shadow: 0 1px 5 px rgbs(104, 104, 104, 0.8)
 }
@@ -30,7 +30,7 @@ body {
   font-size: 1.5rem;
   font-weight: 1.5rem;
   height: 1.5rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(217, 242, 179,0.5);
 }
 .logo-container {
   display: flex;
@@ -50,14 +50,14 @@ body {
   flex-wrap: wrap;
   padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255,255,255,0.5);
+  color: rgba(217, 242, 179,0.5);
   margin-left: 1rem;
   border-bottom: 0.25rem solid transparent;
 }
 
 .nav-link:hover{
-  color: rgba(255,255,255,0.5);
-  border-bottom-color:rgba(255,255,255,0.5);
+  color: rgb(217, 242, 179);
+  border-bottom-color:rgb(217, 242, 179);
 }
 
 .nav-link.active {
@@ -138,7 +138,7 @@ footer{
   justify-content: center;
 }
 
- @media only screen and (max-width: 450px){
+@media only screen and (max-width: 655px){
   .head-container{
     flex-direction: column;
     justify-content: center;
@@ -146,15 +146,15 @@ footer{
     align-items: center;
   }
   .logo-container{
-    /* flex-direction: row; */
     align-items: center;
   }
-
   .nav{
     margin:auto;
     align-items: center;
   }
+}
 
+ @media only screen and (max-width: 450px){
   h1{
     font-size: 2rem;
   }
