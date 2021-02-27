@@ -121,7 +121,7 @@ h2, h3, p{
   flex-direction: row;
   justify-content: center;
   align-content: center;
-  width:200px;
+  width: 100%;
   border-bottom: 1px solid var(--dark);
 }
 
@@ -133,7 +133,7 @@ h2, h3, p{
   display: flex;
   flex-direction: column;
   align-content: space-around;
-  width: 200px;
+  width: 100%;
 }
 
 /* .meal-titles p {
@@ -193,5 +193,8 @@ h2, h3, p{
 @media only screen and (max-width: 450px){
   h1{
     font-size: 2rem;
+  }
+  .meal-plan-card {
+    width: 300px;
   }
 } 
