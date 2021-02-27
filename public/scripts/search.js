@@ -35,7 +35,10 @@ searchBtn.addEventListener('click', ()=> {
 
 })
 
+
+
 const createUI = (obj)=> {
+  mainSection.innerHTML = '';
   // For loop to create recipe cards
   for(let i = 0; i <= obj.length; i++){
     // All divs that will be used in the recipe display
