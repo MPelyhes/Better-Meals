@@ -3,8 +3,8 @@ const User = require('../models/user');
 const ExpressError = require('../utils/ExpressError');
 
 
-module.exports.index = (req, res) => {
-  res.render('meals/index')
+module.exports.home = (req, res) => {
+  res.render('meals/home')
 };
 
 module.exports.renderSearch = async (req, res) => {

@@ -5,8 +5,8 @@ const { isLoggedIn } = require('../middleware');
 const meals = require('../controllers/meals');
 
 
-router.route('/index')
-  .get(meals.index)
+router.route('/home')
+  .get(meals.home)
 
 router.route('/search')
   .get(catchAsync(meals.renderSearch))
