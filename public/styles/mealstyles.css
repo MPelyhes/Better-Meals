@@ -136,10 +136,6 @@ h2, h3, p{
   width: 100%;
 }
 
-/* .meal-titles p {
-  font-size: 1rem;
-} */
-
 .meal-time{
   color: var(--secondary);
   background-color: var(--dark);
@@ -167,8 +163,40 @@ h2, h3, p{
 }
 /*  MealPlanStyles End */
 
+/* Login & Register Styles Begin */
+
+/* Login & Register Styles End */
+.user-btn {
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  height: 38px;
+  background-color: var(--light);
+  color: var(--primary);
+  border-radius: 3px;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  transition: all 0.2s ease;
+}
+
+.user-btn:hover {
+  border-radius: 6px;
+  box-shadow: 0 8px 6px -6px black;
+  cursor: pointer;
+  background-color: rgba(21, 64, 1, 0.98);
+  color: var(--primary);
+}
+
+.form-label p {
+  color: var(--dark);
+}
 /* Media Queries */
 
+@media only screen and (max-width: 767px){
+  .user-btn{
+    width: 100%;
+  }
+}
 @media only screen and (max-width: 655px){
   .head-container{
     flex-direction: column;
