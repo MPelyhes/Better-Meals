@@ -46,6 +46,7 @@
   border-radius: 10px;
   box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
+  background-color: rgba(21, 64, 1, 0.98);
   font-size: 1.21rem;
 }
 
@@ -130,6 +131,7 @@
   border-radius: 6px;
   box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
+  background-color: rgba(21, 64, 1, 0.98);
   color: var(--primary);
 }
 
@@ -149,6 +151,7 @@
 .delete-btn:hover {
   border-radius: 6px;
   box-shadow: 0 8px 6px -6px black;
+  background-color: rgba(252, 32, 28, 0.95);
   cursor: pointer;
 }
 
@@ -168,6 +171,7 @@
   border-radius: 6px;
   box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
+  background-color: rgba(21, 64, 1, 0.98);
   color: var(--primary);
 }
 
@@ -188,6 +192,7 @@
 .add-meal-btn:hover {
   border-radius: 6px;
   box-shadow: 0 8px 6px -6px black;
+  background-color: rgba(21, 64, 1, 0.98);
   cursor: pointer;
 }
 
