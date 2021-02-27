@@ -13,30 +13,35 @@
     <div class="meal-titles">
        <% if(sundayBreakfast) {%> 
         <div>
-          <p>Breakfast</p>
+          <p class="meal-time">Breakfast</p>
           <h4>
             <a href="/myMeals/<%=sundayBreakfast._id%>"><%=sundayBreakfast.label%></a>
           <h4>
-          <p>Calories: <%=Math.floor(sundayBreakfast.calories / sundayBreakfast.servings)%>/serving</p>
+          <p class="calories">Calories: <%=Math.floor(sundayBreakfast.calories / sundayBreakfast.servings)%>/serving</p>
         </div>
        <% } %>  
       <% if(sundayLunch) {%> 
         <div>
-          <p>Lunch</p>
+          <p class="meal-time">Lunch</p>
           <h4>
             <a href="/myMeals/<%=sundayLunch._id%>"><%=sundayLunch.label%></a>
           <h4>
-          <p>Calories: <%=Math.floor(sundayLunch.calories / sundayLunch.servings)%>/serving</p>
+          <p class="calories">Calories: <%=Math.floor(sundayLunch.calories / sundayLunch.servings)%>/serving</p>
         </div>
       <% } %> 
       <% if(sundayDinner) {%> 
         <div>
-         <p>Dinner</p>
+         <p class="meal-time">Dinner</p>
           <h4>
             <a href="/myMeals/<%=sundayDinner._id%>"><%=sundayDinner.label%></a>
           <h4>
-          <p>Calories: <%=Math.floor(sundayDinner.calories / sundayDinner.servings)%>/serving</p>
+          <p class="calories">Calories: <%=Math.floor(sundayDinner.calories / sundayDinner.servings)%>/serving</p>
         </div>
+      <% } %> 
+      <% if(sundayBreakfast && sundayLunch && sundayDinner) {%> 
+      <div class="total-cal">
+        <p class="calories">Total Calories: <%=Math.floor((sundayBreakfast.calories / sundayBreakfast.servings) + (sundayLunch.calories / sundayLunch.servings) + (sundayDinner.calories / sundayDinner.servings))%></p>
+      </div>
       <% } %> 
     </div>
   </div>
@@ -46,28 +51,36 @@
       <h3>Monday</h3>
     </div>
     <div class="meal-titles">
-      <% if(mondayBreakfast) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=mondayBreakfast._id%>"><%=mondayBreakfast.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(mondayBreakfast.calories / mondayBreakfast.servings)%>/serving</p>
-      </div>
-      <% } %> 
+       <% if(mondayBreakfast) {%> 
+        <div>
+          <p class="meal-time">Breakfast</p>
+          <h4>
+            <a href="/myMeals/<%=mondayBreakfast._id%>"><%=mondayBreakfast.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(mondayBreakfast.calories / mondayBreakfast.servings)%>/serving</p>
+        </div>
+       <% } %>  
       <% if(mondayLunch) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=mondayLunch._id%>"><%=mondayLunch.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(mondayLunch.calories / mondayLunch.servings)%>/serving</p>
-      </div>
+        <div>
+          <p class="meal-time">Lunch</p>
+          <h4>
+            <a href="/myMeals/<%=mondayLunch._id%>"><%=mondayLunch.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(mondayLunch.calories / mondayLunch.servings)%>/serving</p>
+        </div>
       <% } %> 
       <% if(mondayDinner) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=mondayDinner._id%>"><%=mondayDinner.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(mondayDinner.calories / mondayDinner.servings)%>/serving</p>
+        <div>
+         <p class="meal-time">Dinner</p>
+          <h4>
+            <a href="/myMeals/<%=mondayDinner._id%>"><%=mondayDinner.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(mondayDinner.calories / mondayDinner.servings)%>/serving</p>
+        </div>
+      <% } %> 
+      <% if(mondayBreakfast && mondayLunch && mondayDinner) {%> 
+      <div class="total-cal">
+        <p class="calories">Total Calories: <%=Math.floor((mondayBreakfast.calories / mondayBreakfast.servings) + (mondayLunch.calories / mondayLunch.servings) + (mondayDinner.calories / mondayDinner.servings))%></p>
       </div>
       <% } %> 
     </div>
@@ -78,28 +91,36 @@
       <h3>Tuesday</h3>
     </div>
     <div class="meal-titles">
-      <% if(tuesdayBreakfast) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=tuesdayBreakfast._id%>"><%=tuesdayBreakfast.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(tuesdayBreakfast.calories / tuesdayBreakfast.servings)%>/serving</p>
-      </div>
-      <% } %> 
+       <% if(tuesdayBreakfast) {%> 
+        <div>
+          <p class="meal-time">Breakfast</p>
+          <h4>
+            <a href="/myMeals/<%=tuesdayBreakfast._id%>"><%=tuesdayBreakfast.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(tuesdayBreakfast.calories / tuesdayBreakfast.servings)%>/serving</p>
+        </div>
+       <% } %>  
       <% if(tuesdayLunch) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=tuesdayLunch._id%>"><%=tuesdayLunch.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(tuesdayLunch.calories / tuesdayLunch.servings)%>/serving</p>
-      </div>
+        <div>
+          <p class="meal-time">Lunch</p>
+          <h4>
+            <a href="/myMeals/<%=tuesdayLunch._id%>"><%=tuesdayLunch.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(tuesdayLunch.calories / tuesdayLunch.servings)%>/serving</p>
+        </div>
       <% } %> 
       <% if(tuesdayDinner) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=tuesdayDinner._id%>"><%=tuesdayDinner.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(tuesdayDinner.calories / tuesdayDinner.servings)%>/serving</p>
+        <div>
+         <p class="meal-time">Dinner</p>
+          <h4>
+            <a href="/myMeals/<%=tuesdayDinner._id%>"><%=tuesdayDinner.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(tuesdayDinner.calories / tuesdayDinner.servings)%>/serving</p>
+        </div>
+      <% } %> 
+      <% if(tuesdayBreakfast && tuesdayLunch && tuesdayDinner) {%> 
+      <div class="total-cal">
+        <p class="calories">Total Calories: <%=Math.floor((tuesdayBreakfast.calories / tuesdayBreakfast.servings) + (tuesdayLunch.calories / tuesdayLunch.servings) + (tuesdayDinner.calories / tuesdayDinner.servings))%></p>
       </div>
       <% } %> 
     </div>
@@ -110,28 +131,36 @@
       <h3>Wednesday</h3>
     </div>
     <div class="meal-titles">
-      <% if(wednesdayBreakfast) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=wednesdayBreakfast._id%>"><%=wednesdayBreakfast.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(wednesdayBreakfast.calories / wednesdayBreakfast.servings)%>/serving</p>
-      </div>
-      <% } %> 
+       <% if(wednesdayBreakfast) {%> 
+        <div>
+          <p class="meal-time">Breakfast</p>
+          <h4>
+            <a href="/myMeals/<%=wednesdayBreakfast._id%>"><%=wednesdayBreakfast.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(wednesdayBreakfast.calories / wednesdayBreakfast.servings)%>/serving</p>
+        </div>
+       <% } %>  
       <% if(wednesdayLunch) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=wednesdayLunch._id%>"><%=wednesdayLunch.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(wednesdayLunch.calories / wednesdayLunch.servings)%>/serving</p>
-      </div>
+        <div>
+          <p class="meal-time">Lunch</p>
+          <h4>
+            <a href="/myMeals/<%=wednesdayLunch._id%>"><%=wednesdayLunch.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(wednesdayLunch.calories / wednesdayLunch.servings)%>/serving</p>
+        </div>
       <% } %> 
       <% if(wednesdayDinner) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=wednesdayDinner._id%>"><%=wednesdayDinner.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(wednesdayDinner.calories / wednesdayDinner.servings)%>/serving</p>
+        <div>
+         <p class="meal-time">Dinner</p>
+          <h4>
+            <a href="/myMeals/<%=wednesdayDinner._id%>"><%=wednesdayDinner.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(wednesdayDinner.calories / wednesdayDinner.servings)%>/serving</p>
+        </div>
+      <% } %> 
+      <% if(wednesdayBreakfast && wednesdayLunch && wednesdayDinner) {%> 
+      <div class="total-cal">
+        <p class="calories">Total Calories: <%=Math.floor((wednesdayBreakfast.calories / wednesdayBreakfast.servings) + (wednesdayLunch.calories / wednesdayLunch.servings) + (wednesdayDinner.calories / wednesdayDinner.servings))%></p>
       </div>
       <% } %> 
     </div>
@@ -142,28 +171,36 @@
       <h3>Thursday</h3>
     </div>
     <div class="meal-titles">
-      <% if(thursdayBreakfast) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=thursdayBreakfast._id%>"><%=thursdayBreakfast.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(thursdayBreakfast.calories / thursdayBreakfast.servings)%>/serving</p>
-      </div>
-      <% } %> 
+       <% if(thursdayBreakfast) {%> 
+        <div>
+          <p class="meal-time">Breakfast</p>
+          <h4>
+            <a href="/myMeals/<%=thursdayBreakfast._id%>"><%=thursdayBreakfast.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(thursdayBreakfast.calories / thursdayBreakfast.servings)%>/serving</p>
+        </div>
+       <% } %>  
       <% if(thursdayLunch) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=thursdayLunch._id%>"><%=thursdayLunch.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(thursdayLunch.calories / thursdayLunch.servings)%>/serving</p>
-      </div>
+        <div>
+          <p class="meal-time">Lunch</p>
+          <h4>
+            <a href="/myMeals/<%=thursdayLunch._id%>"><%=thursdayLunch.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(thursdayLunch.calories / thursdayLunch.servings)%>/serving</p>
+        </div>
       <% } %> 
       <% if(thursdayDinner) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=thursdayDinner._id%>"><%=thursdayDinner.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(thursdayDinner.calories / thursdayDinner.servings)%>/serving</p>
+        <div>
+         <p class="meal-time">Dinner</p>
+          <h4>
+            <a href="/myMeals/<%=thursdayDinner._id%>"><%=thursdayDinner.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(thursdayDinner.calories / thursdayDinner.servings)%>/serving</p>
+        </div>
+      <% } %> 
+      <% if(thursdayBreakfast && thursdayLunch && thursdayDinner) {%> 
+      <div class="total-cal">
+        <p class="calories">Total Calories: <%=Math.floor((thursdayBreakfast.calories / thursdayBreakfast.servings) + (thursdayLunch.calories / thursdayLunch.servings) + (thursdayDinner.calories / thursdayDinner.servings))%></p>
       </div>
       <% } %> 
     </div>
@@ -174,60 +211,75 @@
       <h3>Friday</h3>
     </div>
     <div class="meal-titles">
-      <% if(fridayBreakfast) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=fridayBreakfast._id%>"><%=fridayBreakfast.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(fridayBreakfast.calories / fridayBreakfast.servings)%>/serving</p>
-      </div>
-      <% } %> 
+       <% if(fridayBreakfast) {%> 
+        <div>
+          <p class="meal-time">Breakfast</p>
+          <h4>
+            <a href="/myMeals/<%=fridayBreakfast._id%>"><%=fridayBreakfast.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(fridayBreakfast.calories / fridayBreakfast.servings)%>/serving</p>
+        </div>
+       <% } %>  
       <% if(fridayLunch) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=fridayLunch._id%>"><%=fridayLunch.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(fridayLunch.calories / fridayLunch.servings)%>/serving</p>
-      </div>
+        <div>
+          <p class="meal-time">Lunch</p>
+          <h4>
+            <a href="/myMeals/<%=fridayLunch._id%>"><%=fridayLunch.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(fridayLunch.calories / fridayLunch.servings)%>/serving</p>
+        </div>
       <% } %> 
       <% if(fridayDinner) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=fridayDinner._id%>"><%=fridayDinner.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(fridayDinner.calories / fridayDinner.servings)%>/serving</p>
+        <div>
+         <p class="meal-time">Dinner</p>
+          <h4>
+            <a href="/myMeals/<%=fridayDinner._id%>"><%=fridayDinner.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(fridayDinner.calories / fridayDinner.servings)%>/serving</p>
+        </div>
+      <% } %> 
+      <% if(fridayBreakfast && fridayLunch && fridayDinner) {%> 
+      <div class="total-cal">
+        <p class="calories">Total Calories: <%=Math.floor((fridayBreakfast.calories / fridayBreakfast.servings) + (fridayLunch.calories / fridayLunch.servings) + (fridayDinner.calories / fridayDinner.servings))%></p>
       </div>
       <% } %> 
     </div>
   </div>
-
   <div class="meal-plan-card">
     <div class="day-title">
       <h3>Saturday</h3>
     </div>
     <div class="meal-titles">
-      <% if(saturdayBreakfast) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=saturdayBreakfast._id%>"><%=saturdayBreakfast.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(saturdayBreakfast.calories / saturdayBreakfast.servings)%>/serving</p>
-      </div>
-      <% } %> 
+       <% if(saturdayBreakfast) {%> 
+        <div>
+          <p class="meal-time">Breakfast</p>
+          <h4>
+            <a href="/myMeals/<%=saturdayBreakfast._id%>"><%=saturdayBreakfast.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(saturdayBreakfast.calories / saturdayBreakfast.servings)%>/serving</p>
+        </div>
+       <% } %>  
       <% if(saturdayLunch) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=saturdayLunch._id%>"><%=saturdayLunch.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(saturdayLunch.calories / saturdayLunch.servings)%>/serving</p>
-      </div>
+        <div>
+          <p class="meal-time">Lunch</p>
+          <h4>
+            <a href="/myMeals/<%=saturdayLunch._id%>"><%=saturdayLunch.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(saturdayLunch.calories / saturdayLunch.servings)%>/serving</p>
+        </div>
       <% } %> 
       <% if(saturdayDinner) {%> 
-      <div>
-        <h4>
-          <a href="/myMeals/<%=saturdayDinner._id%>"><%=saturdayDinner.label%></a>
-        <h4>
-        <p>Calories: <%=Math.floor(saturdayDinner.calories / saturdayDinner.servings)%>/serving</p>
+        <div>
+         <p class="meal-time">Dinner</p>
+          <h4>
+            <a href="/myMeals/<%=saturdayDinner._id%>"><%=saturdayDinner.label%></a>
+          <h4>
+          <p class="calories">Calories: <%=Math.floor(saturdayDinner.calories / saturdayDinner.servings)%>/serving</p>
+        </div>
+      <% } %> 
+      <% if(saturdayBreakfast && saturdayLunch && saturdayDinner) {%> 
+      <div class="total-cal">
+        <p class="calories">Total Calories: <%=Math.floor((saturdayBreakfast.calories / saturdayBreakfast.servings) + (saturdayLunch.calories / saturdayLunch.servings) + (saturdayDinner.calories / saturdayDinner.servings))%></p>
       </div>
       <% } %> 
     </div>
