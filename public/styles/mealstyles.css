@@ -117,16 +117,54 @@ h2, h3, p{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  width: 1500px;
+  max-width: 1500px;
   margin: auto;
 }
 
 .meal-plan-card {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: flex-start;
+  align-content: center;
   width: 200px;
-  margin: 0 auto;
+  margin: 1rem auto;
+  border: 1px solid var(--dark);
+  background-color: rgba(249, 249, 249, 0.5);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.day-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid var(--dark);
+}
+
+.day-title h3 {
+  margin-top: 0.75rem;
+}
+
+.meal-titles {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.meal-titles p {
+  font-size: 1rem;
+}
+
+ h4 a {
+  color: var(--dark);
+  transition: all 0.2s ease;
+  te
+}
+
+ h4 a:hover {
+  color: var(--light)
 }
 /*  MealPlanStyles End */
 
