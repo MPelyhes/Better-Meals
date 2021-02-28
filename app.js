@@ -41,11 +41,13 @@ app.use(mongoSanitize());
 
 const sessionConfig = {
   secret: 'dragonsarereal',
+  name: '_nzur',
   resave: false,
   saveUninitialized: true,
   // Set up mongo store when ready to deploy!
   cookie: {
     httpOnly: true,
+    // secure: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // expires in one week
     maxAge: 1000 * 60 * 60 * 24 * 7 // one week
   }
