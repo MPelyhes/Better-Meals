@@ -22,6 +22,6 @@ router.route('/myMeals/:id')
   .put(isLoggedIn, catchAsync(meals.addToMealPlan))
 
 router.route('/mealPlan')
-  .get(meals.renderMealPlan);
+  .get(isLoggedIn, catchAsync(meals.renderMealPlan));
 
 module.exports = router;

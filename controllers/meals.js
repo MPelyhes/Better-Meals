@@ -69,7 +69,8 @@ module.exports.addToMealPlan = async (req, res, next) => {
 }
 
 
-module.exports.renderMealPlan = async (req, res) => {
+module.exports.renderMealPlan = async (req, res, next) => {
+  try{
   const user = await User.findById(req.user._id);
   const sundayBreakfast = await SavedMeal.findById(user.sundaybreakfast);
   const sundayLunch = await SavedMeal.findById(user.sundaylunch);
@@ -92,9 +93,10 @@ module.exports.renderMealPlan = async (req, res) => {
   const saturdayBreakfast = await SavedMeal.findById(user.saturdaybreakfast);
   const saturdayLunch = await SavedMeal.findById(user.saturdaylunch);
   const saturdayDinner = await SavedMeal.findById(user.saturdaydinner);
-
-  // res.send({ sundayBreakfast, sundayLunch, sundayDinner, mondayBreakfast, mondayLunch, mondayDinner, tuesdayBreakfast, tuesdayLunch, tuesdayDinner, wednesdayBreakfast, wednesdayLunch, wednesdayDinner, thursdayBreakfast, thursdayLunch, thursdayDinner, fridayBreakfast, fridayLunch, fridayDinner, saturdayBreakfast, saturdayLunch, saturdayDinner })
-
+} catch(e){
+  req.flash('error', e.message)
+  res.redirect('meals/show')
+}
 
   res.render('meals/mealPlan', { sundayBreakfast, sundayLunch, sundayDinner, mondayBreakfast, mondayLunch, mondayDinner, tuesdayBreakfast, tuesdayLunch, tuesdayDinner, wednesdayBreakfast, wednesdayLunch, wednesdayDinner, thursdayBreakfast, thursdayLunch, thursdayDinner, fridayBreakfast, fridayLunch, fridayDinner, saturdayBreakfast, saturdayLunch, saturdayDinner })
 };
