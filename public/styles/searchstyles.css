@@ -117,7 +117,6 @@
 
 .view-meal-btn {
   text-decoration: none;
-  /* margin-right: 8px; */
   padding: 0.75rem;
   background-color: var(--dark);
   color: var(--primary);
@@ -194,6 +193,25 @@
   box-shadow: 0 8px 6px -6px black;
   background-color: rgba(21, 64, 1, 0.98);
   cursor: pointer;
+}
+
+.back-btn {
+  background-color: rgb(32, 143, 219);
+  text-decoration: none;
+  padding: 0.75rem;
+  color: var(--primary);
+  border-radius: 3px;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  border-radius: 6px;
+  box-shadow: 0 8px 6px -6px black;
+  cursor: pointer;
+  background-color: rgba(32, 143, 219, 0.95);
+  color: var(--primary);
 }
 
 @media only screen and (max-width: 300px){
