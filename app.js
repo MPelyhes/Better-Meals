@@ -1,3 +1,8 @@
+if(process.env.NODE_ENV !== 'production'){
+  require('dotenv').config();
+}
+
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -14,8 +19,8 @@ const helmet = require('helmet');
 
 const meals = require('./routes/meals');
 const users = require('./routes/users');
-
-
+const dbURL = process.env.DB_URL; 
+// || 'mongodb://localhost:27017/better-meals'
 mongoose.connect('mongodb://localhost:27017/better-meals', {
     useNewUrlParser: true,
     useCreateIndex: true,

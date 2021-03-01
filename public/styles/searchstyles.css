@@ -214,6 +214,10 @@
   color: var(--primary);
 }
 
+.modal-margin {
+  margin-top: 8rem;
+}
+
 @media only screen and (max-width: 300px){
   .recipe-img{
     width:200px;
@@ -233,6 +237,10 @@
     max-width:90%;
     min-width: 75px;
     margin: 2rem auto;
+  }
+  .add-meal-btn{
+    font-size: 0.75rem;
+    padding: 0;
   }
 }
 
